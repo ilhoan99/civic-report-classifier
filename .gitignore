@@ -1,0 +1,9 @@
+# boundary polygons (33 MB) -- fetched by scripts/download_boundaries.sh
+# (root data/ only; docs/data/ holds the demo's committed assets)
+/data/
+
+__pycache__/
+.pytest_cache/
+*.pyc
+sample_reports.csv
+sample_reports.xlsx

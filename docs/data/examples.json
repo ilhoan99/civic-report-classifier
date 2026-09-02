@@ -1,0 +1,870 @@
+{
+ "meta": {
+  "generated": "2026-09-02",
+  "m1_cb_checkpoint": "conf_m1_cbce_20260723_185403",
+  "text_only_checkpoint": "conf_text_only_20260722_183817",
+  "input_format": "[{sido} {sigungu}] {text}",
+  "deferral_threshold": 0.946,
+  "note": "Report texts are illustrative paraphrases written by the authors; they are not verbatim corpus reports, which cannot be released. All probabilities are real outputs of the trained classifiers listed above."
+ },
+ "examples": [
+  {
+   "id": "canal-cover",
+   "title": "Broken canal cover",
+   "text_ko": "농수로 덮개가 파손되어 추락 위험이 있습니다",
+   "text_en": "An irrigation-canal cover is broken and someone could fall in.",
+   "note": "The headline phenomenon. Text alone is ambiguous, so the text-only model defaults to the majority agency. Region tokens flip the route to the rural-infrastructure agency (KRC) in farming districts and keep the local government in the Seoul city center and Sangju. Where confidence clears the deferral threshold the report auto-routes; in the borderline districts the flipped prediction still goes to a human for confirmation - the intended safe behavior for rare agencies.",
+   "model_input_sample": "[서울특별시 강남구] 농수로 덮개가 파손되어 추락 위험이 있습니다",
+   "text_only": {
+    "top": [
+     {
+      "agency": "LocalGov",
+      "p": 0.599
+     },
+     {
+      "agency": "KRC",
+      "p": 0.228
+     },
+     {
+      "agency": "KCTA",
+      "p": 0.163
+     }
+    ],
+    "defer": true
+   },
+   "districts": [
+    {
+     "sido": "서울특별시",
+     "sigungu": "강남구",
+     "name_en": "Gangnam-gu, Seoul",
+     "center": [
+      37.4981,
+      127.0575
+     ],
+     "top": [
+      {
+       "agency": "LocalGov",
+       "p": 0.87
+      },
+      {
+       "agency": "KCTA",
+       "p": 0.127
+      },
+      {
+       "agency": "KRC",
+       "p": 0.001
+      }
+     ],
+     "defer": true
+    },
+    {
+     "sido": "경기도",
+     "sigungu": "수원시",
+     "name_en": "Suwon-si, Gyeonggi-do",
+     "center": [
+      37.2901,
+      127.012
+     ],
+     "top": [
+      {
+       "agency": "KRC",
+       "p": 0.493
+      },
+      {
+       "agency": "LocalGov",
+       "p": 0.432
+      },
+      {
+       "agency": "KCTA",
+       "p": 0.069
+      }
+     ],
+     "defer": true
+    },
+    {
+     "sido": "경기도",
+     "sigungu": "김포시",
+     "name_en": "Gimpo-si, Gyeonggi-do",
+     "center": [
+      37.6842,
+      126.596
+     ],
+     "top": [
+      {
+       "agency": "KRC",
+       "p": 0.963
+      },
+      {
+       "agency": "LocalGov",
+       "p": 0.031
+      },
+      {
+       "agency": "KCTA",
+       "p": 0.004
+      }
+     ],
+     "defer": false
+    },
+    {
+     "sido": "전북특별자치도",
+     "sigungu": "완주군",
+     "name_en": "Wanju-gun, Jeonbuk",
+     "center": [
+      35.8825,
+      127.2427
+     ],
+     "top": [
+      {
+       "agency": "KRC",
+       "p": 0.929
+      },
+      {
+       "agency": "LocalGov",
+       "p": 0.063
+      },
+      {
+       "agency": "KCTA",
+       "p": 0.005
+      }
+     ],
+     "defer": true
+    },
+    {
+     "sido": "충청남도",
+     "sigungu": "당진시",
+     "name_en": "Dangjin-si, Chungcheongnam-do",
+     "center": [
+      36.9144,
+      126.6469
+     ],
+     "top": [
+      {
+       "agency": "KRC",
+       "p": 0.878
+      },
+      {
+       "agency": "LocalGov",
+       "p": 0.111
+      },
+      {
+       "agency": "KCTA",
+       "p": 0.007
+      }
+     ],
+     "defer": true
+    },
+    {
+     "sido": "경상북도",
+     "sigungu": "상주시",
+     "name_en": "Sangju-si, Gyeongsangbuk-do",
+     "center": [
+      36.4491,
+      128.0979
+     ],
+     "top": [
+      {
+       "agency": "LocalGov",
+       "p": 0.955
+      },
+      {
+       "agency": "KCTA",
+       "p": 0.04
+      },
+      {
+       "agency": "MOLIT",
+       "p": 0.002
+      }
+     ],
+     "defer": false
+    }
+   ]
+  },
+  {
+   "id": "road-debris",
+   "title": "Debris on the road",
+   "text_ko": "도로에 큰 낙하물이 떨어져 있습니다",
+   "text_en": "A large object has fallen onto the road.",
+   "note": "Who clears a fallen object depends on whose road it is. In the Seoul city center the model routes to the local government with near certainty. In Hanam, an expressway-corridor city, the expressway corporation becomes the top call; in Goseong and Goesan, counties threaded by national highways, the transport ministry does. The flipped calls sit near 0.5 confidence and defer to a human - the intended handling of genuinely ambiguous jurisdiction.",
+   "model_input_sample": "[서울특별시 강남구] 도로에 큰 낙하물이 떨어져 있습니다",
+   "text_only": {
+    "top": [
+     {
+      "agency": "LocalGov",
+      "p": 0.782
+     },
+     {
+      "agency": "MOLIT",
+      "p": 0.122
+     },
+     {
+      "agency": "KEC",
+      "p": 0.073
+     }
+    ],
+    "defer": true
+   },
+   "districts": [
+    {
+     "sido": "서울특별시",
+     "sigungu": "강남구",
+     "name_en": "Gangnam-gu, Seoul",
+     "center": [
+      37.4981,
+      127.0575
+     ],
+     "top": [
+      {
+       "agency": "LocalGov",
+       "p": 0.983
+      },
+      {
+       "agency": "KEC",
+       "p": 0.007
+      },
+      {
+       "agency": "KCTA",
+       "p": 0.006
+      }
+     ],
+     "defer": false
+    },
+    {
+     "sido": "경기도",
+     "sigungu": "수원시",
+     "name_en": "Suwon-si, Gyeonggi-do",
+     "center": [
+      37.2901,
+      127.012
+     ],
+     "top": [
+      {
+       "agency": "LocalGov",
+       "p": 0.837
+      },
+      {
+       "agency": "KEC",
+       "p": 0.075
+      },
+      {
+       "agency": "MOLIT",
+       "p": 0.064
+      }
+     ],
+     "defer": true
+    },
+    {
+     "sido": "경기도",
+     "sigungu": "하남시",
+     "name_en": "Hanam-si, Gyeonggi-do",
+     "center": [
+      37.5357,
+      127.208
+     ],
+     "top": [
+      {
+       "agency": "KEC",
+       "p": 0.492
+      },
+      {
+       "agency": "LocalGov",
+       "p": 0.44
+      },
+      {
+       "agency": "LH",
+       "p": 0.033
+      }
+     ],
+     "defer": true
+    },
+    {
+     "sido": "경상남도",
+     "sigungu": "고성군",
+     "name_en": "Goseong-gun, Gyeongsangnam-do",
+     "center": [
+      35.0102,
+      128.2571
+     ],
+     "top": [
+      {
+       "agency": "MOLIT",
+       "p": 0.493
+      },
+      {
+       "agency": "LocalGov",
+       "p": 0.475
+      },
+      {
+       "agency": "KEC",
+       "p": 0.018
+      }
+     ],
+     "defer": true
+    },
+    {
+     "sido": "충청북도",
+     "sigungu": "괴산군",
+     "name_en": "Goesan-gun, Chungcheongbuk-do",
+     "center": [
+      36.776,
+      127.8348
+     ],
+     "top": [
+      {
+       "agency": "MOLIT",
+       "p": 0.433
+      },
+      {
+       "agency": "LocalGov",
+       "p": 0.394
+      },
+      {
+       "agency": "KEC",
+       "p": 0.154
+      }
+     ],
+     "defer": true
+    }
+   ]
+  },
+  {
+   "id": "tunnel-light",
+   "title": "Tunnel lights out",
+   "text_ko": "터널 안 조명이 꺼져 있습니다",
+   "text_en": "The lights inside a tunnel are out.",
+   "note": "A tunnel is a different tunnel in different districts. City tunnels belong to the local government, and in Seoul the model says so with high confidence. In districts crossed by expressways - Yeongju, Hanam, Yangyang - the same sentence reads as an expressway tunnel and routes to the corporation, at moderate confidence that defers for human confirmation.",
+   "model_input_sample": "[서울특별시 용산구] 터널 안 조명이 꺼져 있습니다",
+   "text_only": {
+    "top": [
+     {
+      "agency": "LocalGov",
+      "p": 0.543
+     },
+     {
+      "agency": "KEC",
+      "p": 0.278
+     },
+     {
+      "agency": "KCTA",
+      "p": 0.08
+     }
+    ],
+    "defer": true
+   },
+   "districts": [
+    {
+     "sido": "서울특별시",
+     "sigungu": "용산구",
+     "name_en": "Yongsan-gu, Seoul",
+     "center": [
+      37.5258,
+      126.9783
+     ],
+     "top": [
+      {
+       "agency": "LocalGov",
+       "p": 0.931
+      },
+      {
+       "agency": "KORAIL",
+       "p": 0.045
+      },
+      {
+       "agency": "KEC",
+       "p": 0.01
+      }
+     ],
+     "defer": true
+    },
+    {
+     "sido": "서울특별시",
+     "sigungu": "강남구",
+     "name_en": "Gangnam-gu, Seoul",
+     "center": [
+      37.4981,
+      127.0575
+     ],
+     "top": [
+      {
+       "agency": "LocalGov",
+       "p": 0.909
+      },
+      {
+       "agency": "KEC",
+       "p": 0.056
+      },
+      {
+       "agency": "KCTA",
+       "p": 0.018
+      }
+     ],
+     "defer": true
+    },
+    {
+     "sido": "경기도",
+     "sigungu": "하남시",
+     "name_en": "Hanam-si, Gyeonggi-do",
+     "center": [
+      37.5357,
+      127.208
+     ],
+     "top": [
+      {
+       "agency": "KEC",
+       "p": 0.621
+      },
+      {
+       "agency": "LocalGov",
+       "p": 0.286
+      },
+      {
+       "agency": "LH",
+       "p": 0.071
+      }
+     ],
+     "defer": true
+    },
+    {
+     "sido": "경상북도",
+     "sigungu": "영주시",
+     "name_en": "Yeongju-si, Gyeongsangbuk-do",
+     "center": [
+      36.8807,
+      128.5344
+     ],
+     "top": [
+      {
+       "agency": "KEC",
+       "p": 0.631
+      },
+      {
+       "agency": "LocalGov",
+       "p": 0.253
+      },
+      {
+       "agency": "MOLIT",
+       "p": 0.1
+      }
+     ],
+     "defer": true
+    },
+    {
+     "sido": "강원특별자치도",
+     "sigungu": "양양군",
+     "name_en": "Yangyang-gun, Gangwon",
+     "center": [
+      38.0101,
+      128.6236
+     ],
+     "top": [
+      {
+       "agency": "KEC",
+       "p": 0.596
+      },
+      {
+       "agency": "MOLIT",
+       "p": 0.213
+      },
+      {
+       "agency": "LocalGov",
+       "p": 0.18
+      }
+     ],
+     "defer": true
+    }
+   ]
+  },
+  {
+   "id": "signal-broken",
+   "title": "Broken traffic signal",
+   "text_ko": "사거리 신호등이 작동하지 않고 있습니다",
+   "text_en": "The traffic signal at an intersection is not working.",
+   "note": "Signals sit on the boundary between the road manager and the police. The local government is the usual handler, but the police share climbs steadily across districts - watch the second bar grow from Gangnam to Changnyeong - and flips to the top in Ulju county, matching where these reports historically went. The text-only model can express none of this gradient.",
+   "model_input_sample": "[서울특별시 강남구] 사거리 신호등이 작동하지 않고 있습니다",
+   "text_only": {
+    "top": [
+     {
+      "agency": "LocalGov",
+      "p": 0.849
+     },
+     {
+      "agency": "Police",
+      "p": 0.136
+     },
+     {
+      "agency": "LH",
+      "p": 0.013
+     }
+    ],
+    "defer": true
+   },
+   "districts": [
+    {
+     "sido": "서울특별시",
+     "sigungu": "강남구",
+     "name_en": "Gangnam-gu, Seoul",
+     "center": [
+      37.4981,
+      127.0575
+     ],
+     "top": [
+      {
+       "agency": "LocalGov",
+       "p": 0.967
+      },
+      {
+       "agency": "Police",
+       "p": 0.028
+      },
+      {
+       "agency": "LH",
+       "p": 0.005
+      }
+     ],
+     "defer": false
+    },
+    {
+     "sido": "경상북도",
+     "sigungu": "영덕군",
+     "name_en": "Yeongdeok-gun, Gyeongsangbuk-do",
+     "center": [
+      36.4696,
+      129.2946
+     ],
+     "top": [
+      {
+       "agency": "LocalGov",
+       "p": 0.722
+      },
+      {
+       "agency": "Police",
+       "p": 0.273
+      },
+      {
+       "agency": "KCTA",
+       "p": 0.004
+      }
+     ],
+     "defer": true
+    },
+    {
+     "sido": "경상남도",
+     "sigungu": "창녕군",
+     "name_en": "Changnyeong-gun, Gyeongsangnam-do",
+     "center": [
+      35.5258,
+      128.4748
+     ],
+     "top": [
+      {
+       "agency": "LocalGov",
+       "p": 0.677
+      },
+      {
+       "agency": "Police",
+       "p": 0.319
+      },
+      {
+       "agency": "KCTA",
+       "p": 0.001
+      }
+     ],
+     "defer": true
+    },
+    {
+     "sido": "울산광역시",
+     "sigungu": "울주군",
+     "name_en": "Ulju-gun, Ulsan",
+     "center": [
+      35.5259,
+      129.1644
+     ],
+     "top": [
+      {
+       "agency": "Police",
+       "p": 0.873
+      },
+      {
+       "agency": "LocalGov",
+       "p": 0.124
+      },
+      {
+       "agency": "KCTA",
+       "p": 0.001
+      }
+     ],
+     "defer": true
+    }
+   ]
+  },
+  {
+   "id": "rail-fence",
+   "title": "Fallen trackside fence",
+   "text_ko": "선로 옆 울타리가 쓰러져 있습니다",
+   "text_en": "A fence beside the railroad tracks has fallen over.",
+   "note": "Here text and location pull in opposite directions. The text-only model picks the railroad corporation outright. Region tokens keep that call in the east-coast rail corridor but flip it to the local government in dense urban Busan, where a fence near the tracks is usually a municipal one. No district clears the threshold, so every case is confirmed by a human.",
+   "model_input_sample": "[강원특별자치도 동해시] 선로 옆 울타리가 쓰러져 있습니다",
+   "text_only": {
+    "top": [
+     {
+      "agency": "KORAIL",
+      "p": 0.537
+     },
+     {
+      "agency": "LocalGov",
+      "p": 0.341
+     },
+     {
+      "agency": "KCTA",
+      "p": 0.088
+     }
+    ],
+    "defer": true
+   },
+   "districts": [
+    {
+     "sido": "강원특별자치도",
+     "sigungu": "동해시",
+     "name_en": "Donghae-si, Gangwon",
+     "center": [
+      37.5137,
+      129.0463
+     ],
+     "top": [
+      {
+       "agency": "KORAIL",
+       "p": 0.629
+      },
+      {
+       "agency": "LocalGov",
+       "p": 0.261
+      },
+      {
+       "agency": "KCTA",
+       "p": 0.055
+      }
+     ],
+     "defer": true
+    },
+    {
+     "sido": "강원특별자치도",
+     "sigungu": "양양군",
+     "name_en": "Yangyang-gun, Gangwon",
+     "center": [
+      38.0101,
+      128.6236
+     ],
+     "top": [
+      {
+       "agency": "KORAIL",
+       "p": 0.588
+      },
+      {
+       "agency": "LocalGov",
+       "p": 0.249
+      },
+      {
+       "agency": "KEPCO",
+       "p": 0.072
+      }
+     ],
+     "defer": true
+    },
+    {
+     "sido": "서울특별시",
+     "sigungu": "용산구",
+     "name_en": "Yongsan-gu, Seoul",
+     "center": [
+      37.5258,
+      126.9783
+     ],
+     "top": [
+      {
+       "agency": "KORAIL",
+       "p": 0.508
+      },
+      {
+       "agency": "LocalGov",
+       "p": 0.426
+      },
+      {
+       "agency": "KCTA",
+       "p": 0.05
+      }
+     ],
+     "defer": true
+    },
+    {
+     "sido": "부산광역시",
+     "sigungu": "사상구",
+     "name_en": "Sasang-gu, Busan",
+     "center": [
+      35.1579,
+      128.9874
+     ],
+     "top": [
+      {
+       "agency": "LocalGov",
+       "p": 0.652
+      },
+      {
+       "agency": "KCTA",
+       "p": 0.164
+      },
+      {
+       "agency": "KORAIL",
+       "p": 0.149
+      }
+     ],
+     "defer": true
+    },
+    {
+     "sido": "부산광역시",
+     "sigungu": "강서구",
+     "name_en": "Gangseo-gu, Busan",
+     "center": [
+      35.112,
+      128.8703
+     ],
+     "top": [
+      {
+       "agency": "LocalGov",
+       "p": 0.671
+      },
+      {
+       "agency": "KCTA",
+       "p": 0.178
+      },
+      {
+       "agency": "KORAIL",
+       "p": 0.099
+      }
+     ],
+     "defer": true
+    }
+   ]
+  },
+  {
+   "id": "leaning-pole",
+   "title": "Leaning utility pole",
+   "text_ko": "전신주가 기울어져 쓰러질 것 같습니다",
+   "text_en": "A utility pole is leaning and looks like it is about to fall.",
+   "note": "A genuinely hard jurisdiction call: the pole itself belongs to the power corporation, but the cables strung on it belong to the telecom association. The top call flips between the two by district, both models stay uncertain, and every case is deferred to a human reviewer - the intended behavior for ambiguous cases.",
+   "model_input_sample": "[서울특별시 강남구] 전신주가 기울어져 쓰러질 것 같습니다",
+   "text_only": {
+    "top": [
+     {
+      "agency": "KCTA",
+      "p": 0.53
+     },
+     {
+      "agency": "KEPCO",
+      "p": 0.441
+     },
+     {
+      "agency": "LocalGov",
+      "p": 0.024
+     }
+    ],
+    "defer": true
+   },
+   "districts": [
+    {
+     "sido": "서울특별시",
+     "sigungu": "강남구",
+     "name_en": "Gangnam-gu, Seoul",
+     "center": [
+      37.4981,
+      127.0575
+     ],
+     "top": [
+      {
+       "agency": "KCTA",
+       "p": 0.552
+      },
+      {
+       "agency": "KEPCO",
+       "p": 0.408
+      },
+      {
+       "agency": "LocalGov",
+       "p": 0.035
+      }
+     ],
+     "defer": true
+    },
+    {
+     "sido": "경기도",
+     "sigungu": "수원시",
+     "name_en": "Suwon-si, Gyeonggi-do",
+     "center": [
+      37.2901,
+      127.012
+     ],
+     "top": [
+      {
+       "agency": "KEPCO",
+       "p": 0.544
+      },
+      {
+       "agency": "KCTA",
+       "p": 0.428
+      },
+      {
+       "agency": "LocalGov",
+       "p": 0.021
+      }
+     ],
+     "defer": true
+    },
+    {
+     "sido": "경기도",
+     "sigungu": "하남시",
+     "name_en": "Hanam-si, Gyeonggi-do",
+     "center": [
+      37.5357,
+      127.208
+     ],
+     "top": [
+      {
+       "agency": "KEPCO",
+       "p": 0.671
+      },
+      {
+       "agency": "KCTA",
+       "p": 0.309
+      },
+      {
+       "agency": "LocalGov",
+       "p": 0.012
+      }
+     ],
+     "defer": true
+    },
+    {
+     "sido": "전북특별자치도",
+     "sigungu": "완주군",
+     "name_en": "Wanju-gun, Jeonbuk",
+     "center": [
+      35.8825,
+      127.2427
+     ],
+     "top": [
+      {
+       "agency": "KEPCO",
+       "p": 0.534
+      },
+      {
+       "agency": "KCTA",
+       "p": 0.446
+      },
+      {
+       "agency": "LocalGov",
+       "p": 0.013
+      }
+     ],
+     "defer": true
+    }
+   ]
+  }
+ ]
+}

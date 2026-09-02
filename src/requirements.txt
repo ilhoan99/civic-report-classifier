@@ -1,0 +1,4 @@
+shapely>=2.0
+numpy
+# optional -- only for show_tokenization() / the token line in example.py
+# transformers

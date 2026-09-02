@@ -1,0 +1,263 @@
+{
+ "meta": {
+  "source": "outputs/paper_package (paper ledger)",
+  "note": "All numbers match the paper; none are recomputed."
+ },
+ "headline": {
+  "rare_agency_headtohead": {
+   "rules": 28.5,
+   "model": 76.8,
+   "n": 9000,
+   "agencies": 9
+  },
+  "overall_headtohead": {
+   "rules": 90.1,
+   "model": 93.6,
+   "n": 66100
+  },
+  "rarest_f1": {
+   "base": 4.6,
+   "final": 29.8
+  },
+  "conflict_subset_f1": {
+   "text_only": 33.7,
+   "final": 41.2
+  },
+  "imbalance": "1,292:1",
+  "latency_ms": 4.0,
+  "throughput_rps": 729,
+  "corpus_reports": "6.6M",
+  "districts": 229,
+  "agencies": 12
+ },
+ "deferral": {
+  "curve": [
+   {
+    "coverage": 0.05,
+    "auto_accuracy": 0.9994,
+    "threshold": 0.9996
+   },
+   {
+    "coverage": 0.1,
+    "auto_accuracy": 0.9991,
+    "threshold": 0.9994
+   },
+   {
+    "coverage": 0.15,
+    "auto_accuracy": 0.9988,
+    "threshold": 0.9992
+   },
+   {
+    "coverage": 0.2,
+    "auto_accuracy": 0.9983,
+    "threshold": 0.9989
+   },
+   {
+    "coverage": 0.25,
+    "auto_accuracy": 0.998,
+    "threshold": 0.9985
+   },
+   {
+    "coverage": 0.3,
+    "auto_accuracy": 0.9976,
+    "threshold": 0.998
+   },
+   {
+    "coverage": 0.35,
+    "auto_accuracy": 0.9971,
+    "threshold": 0.9974
+   },
+   {
+    "coverage": 0.4,
+    "auto_accuracy": 0.9966,
+    "threshold": 0.9965
+   },
+   {
+    "coverage": 0.45,
+    "auto_accuracy": 0.996,
+    "threshold": 0.9953
+   },
+   {
+    "coverage": 0.5,
+    "auto_accuracy": 0.9951,
+    "threshold": 0.9937
+   },
+   {
+    "coverage": 0.55,
+    "auto_accuracy": 0.9942,
+    "threshold": 0.9914
+   },
+   {
+    "coverage": 0.6,
+    "auto_accuracy": 0.9929,
+    "threshold": 0.9881
+   },
+   {
+    "coverage": 0.65,
+    "auto_accuracy": 0.9915,
+    "threshold": 0.9831
+   },
+   {
+    "coverage": 0.7,
+    "auto_accuracy": 0.9895,
+    "threshold": 0.9757
+   },
+   {
+    "coverage": 0.75,
+    "auto_accuracy": 0.9873,
+    "threshold": 0.9643
+   },
+   {
+    "coverage": 0.8,
+    "auto_accuracy": 0.9843,
+    "threshold": 0.9461
+   },
+   {
+    "coverage": 0.85,
+    "auto_accuracy": 0.98,
+    "threshold": 0.9133
+   },
+   {
+    "coverage": 0.9,
+    "auto_accuracy": 0.9735,
+    "threshold": 0.8493
+   },
+   {
+    "coverage": 0.95,
+    "auto_accuracy": 0.9627,
+    "threshold": 0.7156
+   },
+   {
+    "coverage": 1.0,
+    "auto_accuracy": 0.9443,
+    "threshold": 0.2605
+   }
+  ],
+  "operating_point": {
+   "coverage": 0.8,
+   "threshold": 0.946,
+   "auto_accuracy": 0.9843
+  }
+ },
+ "provinces": [
+  {
+   "sido": "경기도",
+   "name_en": "Gyeonggi",
+   "n": 145922,
+   "accuracy": 0.9377,
+   "macro_f1": 0.5807
+  },
+  {
+   "sido": "서울특별시",
+   "name_en": "Seoul",
+   "n": 82371,
+   "accuracy": 0.9555,
+   "macro_f1": 0.6116
+  },
+  {
+   "sido": "인천광역시",
+   "name_en": "Incheon",
+   "n": 36913,
+   "accuracy": 0.9418,
+   "macro_f1": 0.5612
+  },
+  {
+   "sido": "부산광역시",
+   "name_en": "Busan",
+   "n": 33026,
+   "accuracy": 0.9466,
+   "macro_f1": 0.5575
+  },
+  {
+   "sido": "대구광역시",
+   "name_en": "Daegu",
+   "n": 27921,
+   "accuracy": 0.9359,
+   "macro_f1": 0.5961
+  },
+  {
+   "sido": "경상남도",
+   "name_en": "Gyeongnam",
+   "n": 27704,
+   "accuracy": 0.9457,
+   "macro_f1": 0.6313
+  },
+  {
+   "sido": "대전광역시",
+   "name_en": "Daejeon",
+   "n": 27219,
+   "accuracy": 0.9637,
+   "macro_f1": 0.6087
+  },
+  {
+   "sido": "광주광역시",
+   "name_en": "Gwangju",
+   "n": 26896,
+   "accuracy": 0.9626,
+   "macro_f1": 0.5113
+  },
+  {
+   "sido": "전북특별자치도",
+   "name_en": "Jeonbuk",
+   "n": 22584,
+   "accuracy": 0.9533,
+   "macro_f1": 0.5913
+  },
+  {
+   "sido": "충청남도",
+   "name_en": "Chungnam",
+   "n": 21478,
+   "accuracy": 0.9337,
+   "macro_f1": 0.5909
+  },
+  {
+   "sido": "경상북도",
+   "name_en": "Gyeongbuk",
+   "n": 20931,
+   "accuracy": 0.9463,
+   "macro_f1": 0.6408
+  },
+  {
+   "sido": "충청북도",
+   "name_en": "Chungbuk",
+   "n": 16334,
+   "accuracy": 0.945,
+   "macro_f1": 0.5833
+  },
+  {
+   "sido": "울산광역시",
+   "name_en": "Ulsan",
+   "n": 15511,
+   "accuracy": 0.9232,
+   "macro_f1": 0.5262
+  },
+  {
+   "sido": "전라남도",
+   "name_en": "Jeonnam",
+   "n": 15425,
+   "accuracy": 0.9364,
+   "macro_f1": 0.5345
+  },
+  {
+   "sido": "강원특별자치도",
+   "name_en": "Gangwon",
+   "n": 12941,
+   "accuracy": 0.9385,
+   "macro_f1": 0.5943
+  },
+  {
+   "sido": "제주특별자치도",
+   "name_en": "Jeju",
+   "n": 6863,
+   "accuracy": 0.9631,
+   "macro_f1": 0.7239
+  },
+  {
+   "sido": "세종특별자치시",
+   "name_en": "Sejong",
+   "n": 5386,
+   "accuracy": 0.8719,
+   "macro_f1": 0.599
+  }
+ ]
+}
