@@ -114,10 +114,10 @@ function escapeHtml(s) {
 function initMap(districtsGeo) {
   map = L.map("map", { scrollWheelZoom: false, zoomSnap: 0.5 })
     .setView([36.35, 127.9], 7);
-  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "&copy; OpenStreetMap contributors",
+  L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/"
+      + "World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", {
+    attribution: "Tiles &copy; Esri &mdash; Esri, HERE, Garmin, OpenStreetMap contributors",
     maxZoom: 12,
-    className: "muted-tiles",
   }).addTo(map);
   baseLayer = L.geoJSON(districtsGeo, {
     style: { color: "#c3cad3", weight: 0.5, fill: true,
