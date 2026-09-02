@@ -13,7 +13,12 @@
    "title": "Broken canal cover",
    "text_ko": "농수로 덮개가 파손되어 추락 위험이 있습니다",
    "text_en": "An irrigation-canal cover is broken and someone could fall in.",
-   "note": "The headline phenomenon. Text alone is ambiguous, so the text-only model defaults to the majority agency. Region tokens flip the route to the rural-infrastructure agency (KRC) in farming districts and keep the local government in the Seoul city center and Sangju. Where confidence clears the deferral threshold the report auto-routes; in the borderline districts the flipped prediction still goes to a human for confirmation - the intended safe behavior for rare agencies.",
+   "points": [
+    "Text alone is ambiguous — text-only model: LocalGov 0.60",
+    "Farming districts (Gimpo, Wanju, Dangjin): flips to KRC 0.88–0.96",
+    "Seoul and Sangju: stays LocalGov",
+    "Suwon 0.49: below threshold, goes to human review"
+   ],
    "model_input_sample": "[서울특별시 강남구] 농수로 덮개가 파손되어 추락 위험이 있습니다",
    "text_only": {
     "top": [
@@ -184,7 +189,12 @@
    "title": "Debris on the road",
    "text_ko": "도로에 큰 낙하물이 떨어져 있습니다",
    "text_en": "A large object has fallen onto the road.",
-   "note": "Who clears a fallen object depends on whose road it is. In the Seoul city center the model routes to the local government with near certainty. In Hanam, an expressway-corridor city, the expressway corporation becomes the top call; in Goseong and Goesan, counties threaded by national highways, the transport ministry does. The flipped calls sit near 0.5 confidence and defer to a human - the intended handling of genuinely ambiguous jurisdiction.",
+   "points": [
+    "Whose road? City street LocalGov / expressway KEC / national highway MOLIT",
+    "Gangnam: LocalGov 0.98, auto-routed",
+    "Hanam: KEC 0.49 · Goseong, Goesan: MOLIT ~0.5 — all defer",
+    "Near-0.5 confidence on flips = genuinely ambiguous jurisdiction"
+   ],
    "model_input_sample": "[서울특별시 강남구] 도로에 큰 낙하물이 떨어져 있습니다",
    "text_only": {
     "top": [
@@ -331,7 +341,11 @@
    "title": "Tunnel lights out",
    "text_ko": "터널 안 조명이 꺼져 있습니다",
    "text_en": "The lights inside a tunnel are out.",
-   "note": "A tunnel is a different tunnel in different districts. City tunnels belong to the local government, and in Seoul the model says so with high confidence. In districts crossed by expressways - Yeongju, Hanam, Yangyang - the same sentence reads as an expressway tunnel and routes to the corporation, at moderate confidence that defers for human confirmation.",
+   "points": [
+    "Seoul tunnels: LocalGov 0.91–0.93",
+    "Expressway districts (Yeongju, Hanam, Yangyang): KEC 0.60–0.63",
+    "Flipped calls defer for human confirmation"
+   ],
    "model_input_sample": "[서울특별시 용산구] 터널 안 조명이 꺼져 있습니다",
    "text_only": {
     "top": [
@@ -478,7 +492,12 @@
    "title": "Broken traffic signal",
    "text_ko": "사거리 신호등이 작동하지 않고 있습니다",
    "text_en": "The traffic signal at an intersection is not working.",
-   "note": "Signals sit on the boundary between the road manager and the police. The local government is the usual handler, but the police share climbs steadily across districts - watch the second bar grow from Gangnam to Changnyeong - and flips to the top in Ulju county, matching where these reports historically went. The text-only model can express none of this gradient.",
+   "points": [
+    "Boundary case: road manager (LocalGov) vs police",
+    "Police share grows: Gangnam 0.03 → Yeongdeok 0.27 → Changnyeong 0.32",
+    "Ulju county: flips to Police 0.87",
+    "Text-only model: one fixed answer everywhere"
+   ],
    "model_input_sample": "[서울특별시 강남구] 사거리 신호등이 작동하지 않고 있습니다",
    "text_only": {
     "top": [
@@ -601,7 +620,12 @@
    "title": "Fallen trackside fence",
    "text_ko": "선로 옆 울타리가 쓰러져 있습니다",
    "text_en": "A fence beside the railroad tracks has fallen over.",
-   "note": "Here text and location pull in opposite directions. The text-only model picks the railroad corporation outright. Region tokens keep that call in the east-coast rail corridor but flip it to the local government in dense urban Busan, where a fence near the tracks is usually a municipal one. No district clears the threshold, so every case is confirmed by a human.",
+   "points": [
+    "Text and location disagree — text-only model: KORAIL 0.54",
+    "East-coast rail corridor: stays KORAIL",
+    "Urban Busan: flips to LocalGov 0.65–0.67",
+    "No district clears the threshold — all human-reviewed"
+   ],
    "model_input_sample": "[강원특별자치도 동해시] 선로 옆 울타리가 쓰러져 있습니다",
    "text_only": {
     "top": [
@@ -748,7 +772,11 @@
    "title": "Leaning utility pole",
    "text_ko": "전신주가 기울어져 쓰러질 것 같습니다",
    "text_en": "A utility pole is leaning and looks like it is about to fall.",
-   "note": "A genuinely hard jurisdiction call: the pole itself belongs to the power corporation, but the cables strung on it belong to the telecom association. The top call flips between the two by district, both models stay uncertain, and every case is deferred to a human reviewer - the intended behavior for ambiguous cases.",
+   "points": [
+    "Hard call: the pole is KEPCO's, the cables on it are KCTA's",
+    "Top pick flips by district; confidence stays 0.53–0.67",
+    "Every district defers to human review"
+   ],
    "model_input_sample": "[서울특별시 강남구] 전신주가 기울어져 쓰러질 것 같습니다",
    "text_only": {
     "top": [

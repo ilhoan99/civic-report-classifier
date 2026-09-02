@@ -27,29 +27,27 @@
   <div class="wrap">
     <h1>Same complaint, different agency</h1>
     <p class="lede">
-      South Korea's nationwide civic reporting platform receives more than ten million
-      citizen safety reports a year, routed to 12 agencies whose sizes differ by 1,292:1.
-      The correct agency is not a function of the report text alone — identical complaints
-      are legitimately routed to different agencies depending on <em>where</em> they were
-      filed. This demo shows the deployed remedy: geocode each report to 1 of 229 coarse
-      districts and prepend the district to the text as two plain tokens.
+      10M+ reports a year &middot; 12 agencies &middot; 1,292:1 imbalance, on South
+      Korea's nationwide civic reporting platform. The right agency depends on
+      <em>where</em> a report was filed, not just what it says.
+      Deployed fix: geocode to 1 of 229 districts, prepend the district as two plain tokens.
     </p>
     <div class="stats">
       <div class="stat">
         <div class="v">28.5% <span class="arr">&rarr;</span> 76.8%</div>
-        <div class="k">rare-agency accuracy, incumbent rules vs. classifier, on one month of live intake</div>
+        <div class="k">rare-agency accuracy &middot; rules vs. classifier &middot; live intake</div>
       </div>
       <div class="stat">
         <div class="v">4.6 <span class="arr">&rarr;</span> 29.8</div>
-        <div class="k">F1 of the rarest agency (0.06% of reports), before and after region tokens + class-balanced loss</div>
+        <div class="k">rarest-agency F1 (0.06% share) &middot; before / after region tokens + CB</div>
       </div>
       <div class="stat">
         <div class="v">98.4%</div>
-        <div class="k">accuracy on the 80% of reports routed automatically; the rest defer to human review</div>
+        <div class="k">accuracy on the 80% auto-routed &middot; rest defer to human</div>
       </div>
       <div class="stat">
         <div class="v">4.0 ms</div>
-        <div class="k">latency per report on a single workstation GPU (729 reports/s)</div>
+        <div class="k">per report &middot; single GPU &middot; 729 reports/s</div>
       </div>
     </div>
   </div>
@@ -57,13 +55,14 @@
 
 <section id="demo" class="wrap">
   <h2>Try it: one report, filed in different districts</h2>
+  <ol class="howto">
+    <li>Pick a report</li>
+    <li>Click a highlighted district — the text stays identical</li>
+    <li>Toggle <b>region tokens</b> vs <b>text-only</b></li>
+  </ol>
   <p class="section-lede">
-    Pick a report, then click the highlighted districts on the map. The text stays
-    identical; only the filing district changes. Toggle the model to see why location
-    conditioning matters: the text-only baseline gives the same answer everywhere.
-    Predictions are precomputed real outputs of the two trained classifiers —
-    nothing here is mocked. Report texts are illustrative paraphrases written by the
-    authors; verbatim citizen reports cannot be released.
+    All probabilities: real precomputed outputs of the two trained classifiers.
+    Texts: author-written paraphrases (verbatim reports cannot be released).
   </p>
 
   <div class="demo-grid">
@@ -92,16 +91,15 @@
       <div id="pred-bars" class="pred-bars"></div>
       <div id="pred-badge"></div>
 
-      <p id="example-note" class="note"></p>
+      <ul id="example-note" class="note"></ul>
     </div>
 
     <div class="map-col">
       <div id="map"></div>
       <div class="map-caption">
+        District level only (229 units) — precise coordinates never leave the build step.
         Basemap &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>
-        contributors &copy; <a href="https://carto.com/attributions">CARTO</a>.
-        Districts shown at the same si/gun/gu granularity the model uses (229 units);
-        precise report coordinates never leave the dataset-build step.
+        &copy; <a href="https://carto.com/attributions">CARTO</a>.
       </div>
     </div>
   </div>
@@ -111,38 +109,37 @@
   <div class="wrap">
     <h2>How a coordinate becomes two tokens</h2>
     <p class="section-lede">
-      The entire intervention is a dataset-build step plus one string operation. No new
-      vocabulary, no architecture change, no extra serving path. The
-      <a href="https://github.com/ilhoan99/civic-report-classifier/tree/main/src">released
-      code</a> is the exact logic used to build the paper's datasets.
+      One build step + one string operation. No vocab additions, no architecture change,
+      no extra serving path.
+      <a href="https://github.com/ilhoan99/civic-report-classifier/tree/main/src">Released
+      code</a> = the exact production logic.
     </p>
     <div class="steps">
       <div class="step">
         <div class="n">1</div>
         <h3>GPS point</h3>
         <code>(37.2636, 127.0286)</code>
-        <p>Every report carries the filing coordinates.</p>
+        <p>Attached to every report.</p>
       </div>
       <div class="step">
         <div class="n">2</div>
         <h3>Point-in-polygon</h3>
         <code>경기도 수원시</code>
-        <p>STRtree lookup over 3,558 boundary polygons, coarsened to 229 districts.
-           Offshore points snap to the nearest polygon. The coordinates are then discarded.</p>
+        <p>3,558 polygons &rarr; 229 districts. Offshore points snap to nearest.
+           Coordinates discarded after this step.</p>
       </div>
       <div class="step">
         <div class="n">3</div>
         <h3>Prepend as plain tokens</h3>
         <code>[경기도 수원시] 도로에 포트홀이&hellip;</code>
-        <p>The district pair is prepended to the text and segmented by the ordinary
-           subword tokenizer.</p>
+        <p>Plain tokens, ordinary subword tokenizer.</p>
       </div>
       <div class="step">
         <div class="n">4</div>
         <h3>Encoder + class-balanced loss</h3>
         <code>p(agency | text, district)</code>
-        <p>A 110M-parameter Korean encoder scores 12 agencies. High confidence
-           auto-routes; low confidence defers to a human.</p>
+        <p>110M Korean encoder, 12 agencies. High confidence &rarr; auto-route,
+           low &rarr; human.</p>
       </div>
     </div>
 
@@ -158,23 +155,19 @@ def build_model_input(text, sido, sigungu):
 
 <section id="results" class="wrap">
   <h2>Results at deployment granularity</h2>
-  <p class="section-lede">
-    Aggregate numbers from the paper's ledger — per-province accuracy of the final
-    system and the confidence-deferral trade-off that defines the operating point.
-  </p>
+  <p class="section-lede">Aggregate numbers from the paper's ledger.</p>
   <div class="results-grid">
     <div class="panel">
       <h3>Accuracy by province</h3>
-      <p class="mini">No province falls below 87%. Hover a province for detail.</p>
+      <p class="mini">Minimum 87.2% (Sejong) &middot; maximum 96.3% (Jeju). Hover for detail.</p>
       <div id="provmap"></div>
       <div id="prov-legend" class="legend"></div>
     </div>
     <div class="panel">
       <h3>Deferral curve</h3>
       <p class="mini">
-        Reports are auto-routed highest-confidence first; the rest go to human review.
-        Drag to explore. The deployed operating point is 80% coverage at 98.4% accuracy
-        (threshold 0.946).
+        Highest-confidence reports auto-route; the rest go to human review.
+        Deployed: 80% coverage @ 98.4% (&tau; = 0.946). Drag to explore.
       </p>
       <svg id="defcurve" viewBox="0 0 460 260" role="img"
            aria-label="auto-routed accuracy versus coverage"></svg>
@@ -186,8 +179,8 @@ def build_model_input(text, sido, sigungu):
   <div class="hth">
     <h3>Against the incumbent rule-based router</h3>
     <p class="mini">
-      Retrospective scoring of one month of live intake (January 2026). Both routers
-      scored the same reports — the ones the rules select for themselves.
+      January 2026 live intake, retrospective scoring. Same reports for both routers
+      (the rules' own selection — favors the incumbent).
     </p>
     <table>
       <thead><tr><th></th><th>rule-based incumbent</th><th>this classifier</th></tr></thead>
@@ -202,9 +195,8 @@ def build_model_input(text, sido, sigungu):
 <footer>
   <div class="wrap">
     <p>
-      Research demonstration by the authors (KETI &middot; Uracle). This page is not an
-      official service of the reporting platform. Report texts are illustrative
-      paraphrases; all predictions are real outputs of the trained classifiers.
+      Research demo by the authors (KETI) — not an official service of
+      the platform. Paraphrased example texts &middot; real model outputs.
     </p>
     <p>
       Code: MIT license &middot; boundary polygons:

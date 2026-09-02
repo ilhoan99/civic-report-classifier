@@ -44,7 +44,13 @@ function renderPanel() {
   const ex = currentExample();
   $("report-ko").textContent = ex.text_ko;
   $("report-en").textContent = ex.text_en;
-  $("example-note").textContent = ex.note;
+  const noteEl = $("example-note");
+  noteEl.innerHTML = "";
+  (ex.points || []).forEach((pt) => {
+    const li = document.createElement("li");
+    li.textContent = pt;
+    noteEl.appendChild(li);
+  });
   $("btn-m1").className = state.mode === "m1" ? "on" : "";
   $("btn-t0").className = state.mode === "t0" ? "on" : "";
 
