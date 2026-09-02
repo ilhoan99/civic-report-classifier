@@ -146,6 +146,7 @@ ul.note li::marker { color: var(--primary); }
 .district-chip.sel { transform: scale(1.12); outline: 2px solid var(--primary); }
 .district-chip.rare.sel { outline-color: var(--amber); }
 .leaflet-container { font-family: inherit; font-size: 12px; }
+.muted-tiles { filter: grayscale(1) contrast(0.88) brightness(1.06); }
 
 /* method */
 .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }

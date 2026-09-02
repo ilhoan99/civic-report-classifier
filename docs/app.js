@@ -114,9 +114,10 @@ function escapeHtml(s) {
 function initMap(districtsGeo) {
   map = L.map("map", { scrollWheelZoom: false, zoomSnap: 0.5 })
     .setView([36.35, 127.9], 7);
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-    attribution: "&copy; OpenStreetMap contributors &copy; CARTO",
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "&copy; OpenStreetMap contributors",
     maxZoom: 12,
+    className: "muted-tiles",
   }).addTo(map);
   baseLayer = L.geoJSON(districtsGeo, {
     style: { color: "#c3cad3", weight: 0.5, fill: true,
