@@ -95,5 +95,5 @@ cd docs && python -m http.server 8000    # then open http://localhost:8000
 }
 ```
 
-This is a research artifact by the authors (KETI · Uracle); it is not an
+This is a research artifact by the authors (KETI); it is not an
 official service of the reporting platform.
