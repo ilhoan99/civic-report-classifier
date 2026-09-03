@@ -81,7 +81,7 @@ cd docs && python -m http.server 8000    # then open http://localhost:8000
   [admdongkor](https://github.com/vuski/admdongkor) (CC BY 4.0), version
   pinned to `ver20260401`. The lightweight district/province outlines under
   `docs/data/` are simplified derivatives of the same data.
-- Demo basemap tiles: © OpenStreetMap contributors, © CARTO.
+- Demo basemap tiles: © Esri (World Topo Map).
 
 ## Citation
 
