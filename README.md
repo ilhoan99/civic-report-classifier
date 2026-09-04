@@ -89,7 +89,7 @@ cd docs && python -m http.server 8000    # then open http://localhost:8000
 @misc{kim2026samecomplaint,
   title  = {Same Complaint, Different Agency: Location-Conditioned Routing
             of Civic Reports under Extreme Class Imbalance},
-  author = {Kim, Ilhwan and Oh, Seungtaek and Kim, Changhwan and Moon, Jaewon},
+  author = {Kim, Ilhwan and Oh, Seungtaek and Moon, Jaewon},
   year   = {2026},
   url    = {https://github.com/ilhoan99/civic-report-classifier}
 }

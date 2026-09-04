@@ -98,7 +98,7 @@ h3 { font-size: 16px; margin: 0 0 6px; }
 .bar-row { display: grid; grid-template-columns: 92px 1fr 46px; gap: 8px; align-items: center; font-size: 13px; }
 .bar-row .name { text-align: right; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .bar-row .track { background: var(--bg); border: 1px solid var(--border); border-radius: 4px; height: 16px; overflow: hidden; }
-.bar-row .fill { height: 100%; background: var(--primary); width: 0; transition: width 200ms ease; }
+.bar-row .fill { display: block; height: 100%; background: var(--primary); width: 0; transition: width 200ms ease; }
 .bar-row.rare .fill { background: var(--amber); }
 .bar-row.baseline .fill { background: var(--grey); }
 .bar-row .pct { color: var(--muted); font-variant-numeric: tabular-nums; }
