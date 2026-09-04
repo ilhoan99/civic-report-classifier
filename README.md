@@ -1,7 +1,7 @@
-# Same Complaint, Different Agency
+# Location-Conditioned Learning under Label Ambiguity and Extreme Class Imbalance
 
-**Location-conditioned routing of civic safety reports under extreme class
-imbalance** — companion code and interactive demo for the paper.
+Companion code and interactive demo for the paper. The deployed system routes
+civic safety reports to the responsible agency under a 1,292:1 class imbalance.
 
 **Interactive demo:** https://ilhoan99.github.io/civic-report-classifier/
 
@@ -86,9 +86,9 @@ cd docs && python -m http.server 8000    # then open http://localhost:8000
 ## Citation
 
 ```bibtex
-@misc{kim2026samecomplaint,
-  title  = {Same Complaint, Different Agency: Location-Conditioned Routing
-            of Civic Reports under Extreme Class Imbalance},
+@misc{kim2026location,
+  title  = {Location-Conditioned Learning under Label Ambiguity and
+            Extreme Class Imbalance},
   author = {Kim, Ilhwan and Oh, Seungtaek and Moon, Jaewon},
   year   = {2026},
   url    = {https://github.com/ilhoan99/civic-report-classifier}
