@@ -14,7 +14,7 @@ const AGENCIES = {
   KRC:      { en: "Korea Rural Community Corp.",   ko: "한국농어촌공사" },
   MOLIT:    { en: "Ministry of Land & Transport",  ko: "국토교통부" },
   MSIT:     { en: "Ministry of Science & ICT",     ko: "과학기술정보통신부" },
-  KCTA:     { en: "Telecom Operators Assoc.",      ko: "한국통신사업자연합회" },
+  KTOA:     { en: "Telecom Operators Assoc.",      ko: "한국통신사업자연합회" },
 };
 const RARE = new Set(["KRC", "KORAIL", "MSIT", "KEC", "EduOff", "LH", "MOLIT"]);
 
@@ -93,7 +93,7 @@ function renderBadge(pred) {
   const el = $("pred-badge");
   const p1 = pred.top[0].p;
   if (pred.defer) {
-    el.innerHTML = '<span class="badge defer">defer to human review</span>'
+    el.innerHTML = '<span class="badge defer">defer to rules or staff</span>'
       + '<span class="badge-note">top confidence ' + (p1 * 100).toFixed(1)
       + "% &lt; threshold " + (tau * 100).toFixed(1) + "%</span>";
   } else {
@@ -204,7 +204,7 @@ function initChoropleth(provGeo, results) {
       const p = acc[f.properties.sido];
       l.bindTooltip(
         "<b>" + p.name_en + "</b><br>accuracy " + (p.accuracy * 100).toFixed(1)
-        + "%<br>macro-F1 " + (p.macro_f1 * 100).toFixed(1)
+        + "%<br>macro-F1 (12 agencies) " + (p.macro_f1 * 100).toFixed(1)
         + "<br>n = " + p.n.toLocaleString(),
         { sticky: true });
       l.on("mouseover", () => l.setStyle({ weight: 2, color: "#111827" }));

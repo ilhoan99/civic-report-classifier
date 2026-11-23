@@ -1,7 +1,7 @@
 {
  "meta": {
   "source": "outputs/paper_package (paper ledger)",
-  "note": "All numbers match the paper; none are recomputed."
+  "note": "All numbers match the paper (seed-42 runs); none are recomputed. Province macro-F1 averages all 12 agencies; an agency with no reports and no predictions in a province counts as 0."
  },
  "headline": {
   "rare_agency_headtohead": {
@@ -16,8 +16,8 @@
    "n": 66100
   },
   "rarest_f1": {
-   "base": 4.6,
-   "final": 29.8
+   "base": 3.7,
+   "final": 31.3
   },
   "conflict_subset_f1": {
    "text_only": 33.7,
@@ -187,14 +187,14 @@
    "name_en": "Daejeon",
    "n": 27219,
    "accuracy": 0.9637,
-   "macro_f1": 0.6087
+   "macro_f1": 0.558
   },
   {
    "sido": "광주광역시",
    "name_en": "Gwangju",
    "n": 26896,
    "accuracy": 0.9626,
-   "macro_f1": 0.5113
+   "macro_f1": 0.4687
   },
   {
    "sido": "전북특별자치도",
@@ -250,7 +250,7 @@
    "name_en": "Jeju",
    "n": 6863,
    "accuracy": 0.9631,
-   "macro_f1": 0.7239
+   "macro_f1": 0.4826
   },
   {
    "sido": "세종특별자치시",

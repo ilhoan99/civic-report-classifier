@@ -18,7 +18,7 @@ the text as two plain tokens:
 ```
 
 Combined with a class-balanced loss, this lifts the rarest agency's F1 from
-4.6 to 29.8 and beats the incumbent rule-based router 76.8% to 28.5% on a
+3.7 to 31.3 and beats the incumbent rule-based router 76.8% to 28.5% on a
 balanced rare-agency sample of live intake.
 
 ## What is in this repository
@@ -27,7 +27,7 @@ balanced rare-agency sample of live intake.
 |---|---|
 | `src/` | The released method: coordinates → district (`geocode.py`, the exact production logic) and district → model input (`region_tokens.py`), with a CLI walkthrough (`example.py`) and tests |
 | `docs/` | The interactive demo (GitHub Pages): one report filed in different districts, real precomputed model outputs, deferral behavior, per-province results |
-| `artifacts/` | Aggregate result tables from the paper's ledger (per-province accuracy, per-class F1, deferral curve, per-class auto-routing coverage), the LLM-prompt agency descriptions and tie-break rules, and a synthetic raw-data generator |
+| `artifacts/` | Aggregate result tables from the paper's ledger (per-province accuracy and macro-F1, per-class F1, deferral curve, per-class auto-routing coverage), the LLM-prompt agency descriptions and tie-break rules, and a synthetic raw-data generator |
 | `scripts/` | `download_boundaries.sh` — fetches the pinned boundary polygons (33 MB, not committed) |
 
 ## Quickstart

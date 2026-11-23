@@ -38,12 +38,12 @@
         <div class="k">rare-agency accuracy &middot; rules vs. classifier &middot; live intake</div>
       </div>
       <div class="stat">
-        <div class="v">4.6 <span class="arr">&rarr;</span> 29.8</div>
+        <div class="v">3.7 <span class="arr">&rarr;</span> 31.3</div>
         <div class="k">rarest-agency F1 (0.06% share) &middot; before / after region tokens + CB</div>
       </div>
       <div class="stat">
         <div class="v">98.4%</div>
-        <div class="k">accuracy on the 80% auto-routed &middot; rest defer to human</div>
+        <div class="k">accuracy on the 80% auto-routed &middot; rest deferred to rules or staff</div>
       </div>
       <div class="stat">
         <div class="v">4.0 ms</div>
@@ -138,7 +138,7 @@
         <h3>Encoder + class-balanced loss</h3>
         <code>p(agency | text, district)</code>
         <p>110M Korean encoder, 12 agencies. High confidence &rarr; auto-route,
-           low &rarr; human.</p>
+           low &rarr; rules or staff.</p>
       </div>
     </div>
 
@@ -158,15 +158,15 @@ def build_model_input(text, sido, sigungu):
   <div class="results-grid">
     <div class="panel">
       <h3>Accuracy by province</h3>
-      <p class="mini">Minimum 87.2% (Sejong) &middot; maximum 96.3% (Jeju). Hover for detail.</p>
+      <p class="mini">Minimum 87.2% (Sejong) &middot; maximum 96.4% (Daejeon). Hover for detail.</p>
       <div id="provmap"></div>
       <div id="prov-legend" class="legend"></div>
     </div>
     <div class="panel">
       <h3>Deferral curve</h3>
       <p class="mini">
-        Highest-confidence reports auto-route; the rest go to human review.
-        Deployed: 80% coverage @ 98.4% (&tau; = 0.946). Drag to explore.
+        Highest-confidence reports auto-route; the rest are deferred to the rules or staff.
+        Example operating point: 80% coverage @ 98.4% (&tau; = 0.946). Drag to explore.
       </p>
       <svg id="defcurve" viewBox="0 0 460 260" role="img"
            aria-label="auto-routed accuracy versus coverage"></svg>

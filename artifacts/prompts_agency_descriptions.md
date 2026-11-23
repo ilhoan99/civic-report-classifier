@@ -7,7 +7,7 @@ they are not operator documentation.
 
 Label ids are the canonical training ids. Note that the id order differs from
 the share order used in the paper's tables: the rarest class is label 8
-(한국농어촌공사 / KRC), while label 11 (한국통신사업자연합회 / KCTA) is the
+(한국농어촌공사 / KRC), while label 11 (한국통신사업자연합회 / KTOA) is the
 third-largest class.
 
 | id | abbr | agency |
@@ -23,7 +23,7 @@ third-largest class.
 | 8 | KRC | 한국농어촌공사 |
 | 9 | MOLIT | 국토교통부 |
 | 10 | MSIT | 과학기술정보통신부 |
-| 11 | KCTA | 한국통신사업자연합회 |
+| 11 | KTOA | 한국통신사업자연합회 |
 
 ## Descriptions (Korean — the prompt originals)
 
@@ -131,7 +131,7 @@ facilities and networks, and the postal service (post offices, mail). It is
 also the ministry that owns overhead-cable tidy-up policy and illegal-spam
 countermeasures.
 
-**11 KCTA.** Telecom industry association that takes reports about tangled or
+**11 KTOA.** Telecom industry association that takes reports about tangled or
 sagging overhead broadcast/telecom cables on utility poles and routes them to
 member carriers for tidy-up. It also serves as the carriers' joint channel on
 illegal SMS and voice spam.
@@ -155,7 +155,7 @@ illegal SMS and voice spam.
    broken power lines, transformers — go to KEPCO rather than the local
    government, but a streetlight mounted on the same pole is the local
    government's, and the broadcast/telecom cables strung on it belong to the
-   carriers' side (KCTA).
+   carriers' side (KTOA).
 2. Reports about facilities inside the school boundary — buildings, walls,
    playground equipment — go to the provincial office of education rather than
    the local government, while roads, school routes and child-protection zones
